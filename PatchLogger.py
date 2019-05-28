@@ -53,7 +53,7 @@ def find_patches():
     for dir_name, dir_names, file_names in os.walk(search_dir):
         for file_name in file_names:
             path = os.path.join(dir_name, file_name)
-             for i in range(2, 10):
+            for i in range(2, 10):
                 if path[-i:] in SUPP_EXT:
                     find_patches_in_file(path, log_file)
     log_file.close()
