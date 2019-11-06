@@ -34,6 +34,7 @@ SUPP_EXT = ['.c', '.h', '.ini', '.unit']
 
 import os
 import re
+import pdb
 import time
 import argparse
 from datetime import datetime
@@ -77,7 +78,10 @@ def find_patches_in_file(path, log_file):
                     log_file.write('LINE: ' + str(line_no) + '\n')
                 elif verbose == '2':
                     patched_by = re.search(PATCHED_BY_REGEX, line).group(0)
-                    patch_reason = re.search(PATCH_REASON_REGEX, line).group(0)
+                    try:
+                        patch_reason = re.search(PATCH_REASON_REGEX, line).group(0)
+                    except:
+                        pdb.set_trace()
                     if not patch_found:
                         log_file.write('FILE: ' + path + '\n')
                         print path
